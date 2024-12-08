@@ -44,13 +44,8 @@ export class Game {
     }
 
     newGame() {
-        this.board.cells.forEach(c => c.state.set('empty'));
-        this.board.getCell(3, 3).state.set('black');
-        this.board.getCell(3, 4).state.set('white');
-        this.board.getCell(4, 3).state.set('white');
-        this.board.getCell(4, 4).state.set('black');
+        this.board.reset();
         this.state.set('black');
-
     }
 
 }

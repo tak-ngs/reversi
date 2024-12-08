@@ -1,4 +1,4 @@
-import { computed, Injectable, signal } from "@angular/core";
+import { computed, Injectable, Signal, signal } from "@angular/core";
 
 
 type FixedLengthArray<T, N extends number, A extends any[] = []> = A extends { length: N }
@@ -10,17 +10,26 @@ export type Row = FixedLengthArray<Cell, 8>;
 export type RowCol = FixedLengthArray<Row, 8>
 
 export type BoardIndex = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7;
-export class Cell {
-    state = signal<CellState>('empty');
+export type Cell = {
+    state: Signal<CellState>;
+    put: (s: 'black' | 'white') => void;
+    reverse: () => void;
+}
+export class CellImpl implements Cell {
+    #state = signal<CellState>('empty');
+    readonly state: Signal<CellState> = this.#state;
     put(s: 'black' | 'white') {
-        this.state.set(s);
+        this.#state.set(s);
     }
     reverse() {
         const s = this.state();
         if (s === 'empty') {
             return;
         }
-        this.state.set(reverseColor[s])
+        this.#state.set(reverseColor[s])
+    }
+    reset() {
+        this.#state.set('empty');
     }
 }
 
@@ -47,15 +56,15 @@ function reversableCells(cells: Cell[], forC: 'black' | 'white'): Cell[] {
 @Injectable({ providedIn: 'root' })
 export class Board {
 
-    readonly cells = Array(64).fill(0).map(_ => new Cell());
+    readonly cells = Array(64).fill(0).map(_ => new CellImpl());
     readonly rows: RowCol = Array(8).fill(0)
-        .map((_, i) => this.cells.slice(i * 8, i * 8 + 8) as Row) as RowCol;
+        .map((_, i) => (this.cells as Cell[]).slice(i * 8, i * 8 + 8)) as RowCol;
     readonly aroundsCells = Array(64).fill(0).map((_, i) => {
         const r = (i / 8 | 0) as BoardIndex;
         const c = (i % 8) as BoardIndex;
-        return this.getCellsAround(r, c);
+        return this.#getCellsAround(r, c);
     });
-    reversableCells = computed(() => ({
+    readonly reversableCells = computed(() => ({
         black: this.aroundsCells.map((ac, i) => {
             return this.cells[i].state() === 'empty'
                 ? ac.reduce((acc, cells) => acc.concat(reversableCells(cells, 'black')), [])
@@ -69,6 +78,11 @@ export class Board {
     }))
 
     constructor() {
+        this.reset();
+    }
+
+    reset() {
+        this.cells.map(c => c.reset());
         this.getCell(3, 3).put('black');
         this.getCell(3, 4).put('white');
         this.getCell(4, 3).put('white');
@@ -79,7 +93,7 @@ export class Board {
         return this.cells[8 * r + c];
     }
 
-    getCellsAround(r: BoardIndex, c: BoardIndex): [
+    #getCellsAround(r: BoardIndex, c: BoardIndex): [
         top: Cell[],
         right: Cell[],
         bottom: Cell[],
