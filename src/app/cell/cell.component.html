@@ -1,0 +1,8 @@
+@if (cell().state() === 'empty') {
+<span class="hint {{canPut()}}"></span>
+} @else {
+<span class="stone {{cell().state()}}">
+  <span class="black-face"></span>
+  <span class="white-face"></span>
+</span>
+}

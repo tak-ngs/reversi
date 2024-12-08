@@ -1,0 +1,79 @@
+:host {
+  width: 64px;
+  height: 64px;
+  overflow: hidden;
+  border: 1px solid;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform-style: preserve-3d;
+  perspective: 200px;
+  --stone-size: 54px;
+  --stone-height: 4px;
+}
+
+.stone {
+  display: block;
+  width: var(--stone-size);
+  height: var(--stone-size);
+  border-radius: 50%;
+  transition: transform 0.3s ease-in;
+  box-sizing: border-box;
+  transform-style: preserve-3d;
+  position: relative;
+
+  .black-face {
+    position: absolute;
+    top: 0;
+
+    display: block;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    box-sizing: border-box;
+    border: #333 2px solid;
+    border-radius: 50%;
+  }
+
+  .white-face {
+    position: absolute;
+    top: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    box-sizing: border-box;
+    border: #ddd 2px solid;
+    border-radius: 50%;
+    transform: translateZ(calc(-1 * var(--stone-height)));
+  }
+}
+
+.stone.black {
+  transform: rotateX(0deg) rotateZ(45deg);
+
+}
+
+.stone.white {
+  transform: translateZ(calc(-1 * var(--stone-height))) rotateX(180deg);
+}
+
+.hint {
+  width: 30%;
+  height: 30%;
+  opacity: 0.2;
+  border-radius: 50%;
+  transition-duration: .5s;
+  transition-property: opacity, background-color;
+}
+
+.can-put {
+  &-black {
+    background-color: black;
+  }
+
+  &-white {
+    background-color: white;
+  }
+}
