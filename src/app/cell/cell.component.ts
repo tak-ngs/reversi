@@ -40,13 +40,16 @@ export class CellComponent {
     if (turnFor === undefined) { return }
     const reversableCells = this.reversableCells();
     if (reversableCells.length > 0) {
-      this.game.state.set('pending');
+      const pendingRef = this.game.pending();
       this.cell().put(turnFor);
       from(reversableCells).pipe(
         concatMap(c => of(c).pipe(delay(150))),
       ).subscribe({
         next: cell => cell.reverse(),
-        complete: () => this.game.state.set(reverseColor[turnFor])
+        complete: () => {
+          pendingRef.unlock();
+          this.game.endTurn();
+        }
       });
     }
   }
