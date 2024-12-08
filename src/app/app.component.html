@@ -1,15 +1,27 @@
 <!-- <h1> オセロ</h1> -->
-
-<div class="board">
-  @for (row of board.rows; track $index; let ri = $index ) {
-  <div class="row">
-    @for (cell of row; track $index;let ci = $index){
-    <app-cell [cell]="cell"
-      [address]="[$any(ri),$any(ci)]"></app-cell>
+<div class="toolbar">
+  <button mat-icon-button
+    [mat-menu-trigger-for]="menu">
+    <mat-icon>menu</mat-icon>
+  </button>
+</div>
+<div class="board-container">
+  <div class="board">
+    @for (row of board.rows; track $index; let ri = $index ) {
+    <div class="row">
+      @for (cell of row; track $index;let ci = $index){
+      <app-cell [cell]="cell"
+        [address]="[$any(ri),$any(ci)]"></app-cell>
+      }
+    </div>
     }
   </div>
-  }
 </div>
+
+<mat-menu #menu="matMenu">
+  <button mat-menu-item>ヒントのオン/オフ</button>
+  <button mat-menu-item>自分でめくる</button>
+</mat-menu>
 
 <dialog #cannotPutDialog>
   おける場所がないのでパスします。

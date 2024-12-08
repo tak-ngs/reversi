@@ -1,13 +1,47 @@
 :host {
   display: flex;
-  flex-direction: column;
+  height: 100%;
+}
+
+.toolbar {
+  padding: 8px;
+  display: flex;
+}
+
+.board-container {
+  flex: 1 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .board {
   background-color: darkgreen;
   width: fit-content;
+  align-self: center;
+
+  .row {
+    display: flex;
+  }
 }
 
-.row {
-  display: flex;
+
+@media screen and (orientation: landscape) {
+  :host {
+    flex-flow: row-reverse;
+    align-items: stretch;
+    justify-content: center;
+  }
+}
+
+@media screen and (orientation: portrait) {
+  :host {
+    flex-flow: column nowrap;
+  }
+
+  .toolbar {
+    align-items: center;
+    justify-content: flex-end;
+  }
+
 }

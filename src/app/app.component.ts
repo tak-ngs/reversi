@@ -4,10 +4,17 @@ import { CellComponent } from "./cell/cell.component";
 import { Game } from './game';
 import { toObservable } from '@angular/core/rxjs-interop';
 import { filter } from 'rxjs';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-root',
-  imports: [CellComponent],
+  imports: [CellComponent,
+    MatMenuModule,
+    MatIconModule,
+    MatButtonModule,
+  ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })

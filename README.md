@@ -62,7 +62,12 @@ For more information on using the Angular CLI, including detailed command refere
 
 * [ ] signal整理
 * [ ] 自分でめくるモード
+  * [ ] おいた石のハイライト
+  * [ ] 時間経過でめくるべき石のハイライト
+* [ ] 四隅の黒丸
 * [ ] 両方が詰んだときに終了する
+* [ ] 設定の保存
+* [ ] 盤面の保存
 * [ ] めくり方可変
   * [ ] ていねい
   * [ ] せっかち
