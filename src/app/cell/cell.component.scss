@@ -21,29 +21,25 @@
   transform-style: preserve-3d;
   position: relative;
 
-  .black-face {
-    position: absolute;
-    top: 0;
-
-    display: block;
-    width: 100%;
-    height: 100%;
-    background-color: var(--stone-color-black);
-    box-sizing: border-box;
-    border: #333 var(--stone-edge) solid;
-    border-radius: 50%;
-  }
-
+  .black-face,
   .white-face {
     position: absolute;
     top: 0;
     display: block;
+    box-sizing: border-box;
     width: 100%;
     height: 100%;
-    background-color: var(--stone-color-white);
-    box-sizing: border-box;
-    border: #ddd var(--stone-edge) solid;
     border-radius: 50%;
+  }
+
+  .black-face {
+    background-color: var(--stone-color-black);
+    border: #333 var(--stone-edge) solid;
+  }
+
+  .white-face {
+    background-color: var(--stone-color-white);
+    border: #ddd var(--stone-edge) solid;
     transform: translateZ(calc(-1 * var(--stone-height)));
   }
 }
@@ -66,12 +62,10 @@
   transition-property: opacity, background-color;
 }
 
-.can-put {
-  &-black {
-    background-color: black;
-  }
+.hint.black {
+  background-color: black;
+}
 
-  &-white {
-    background-color: white;
-  }
+.hint.white {
+  background-color: white;
 }

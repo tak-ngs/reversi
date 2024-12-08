@@ -27,7 +27,7 @@ export class CellComponent {
   })
 
   canPut = computed(() => this.reversableCells().length > 0
-    ? `can-put-${this.game.turnFor()}`
+    ? this.game.turnFor()
     : undefined
   );
 
