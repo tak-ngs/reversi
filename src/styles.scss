@@ -1,4 +1,10 @@
 /* You can add global styles to this file, and also import other style files */
 body {
   overscroll-behavior-y: none;
+  --cell-size: 12dvmin;
+  --stone-size: calc(var(--cell-size) * 0.82);
+  --stone-height: calc(var(--stone-size) * 0.15);
+  --stone-edge: calc(var(--stone-size) * 0.03);
+  --stone-color-black: #1c1c1f;
+  --stone-color-white: #f8f5f1;
 }

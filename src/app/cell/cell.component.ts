@@ -43,7 +43,7 @@ export class CellComponent {
       this.game.state.set('pending');
       this.cell().put(turnFor);
       from(reversableCells).pipe(
-        concatMap(c => of(c).pipe(delay(300))),
+        concatMap(c => of(c).pipe(delay(150))),
       ).subscribe({
         next: cell => cell.reverse(),
         complete: () => this.game.state.set(reverseColor[turnFor])
