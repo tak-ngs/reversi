@@ -1,8 +1,9 @@
 import { Component, computed, HostListener, inject, input } from '@angular/core';
 import { Board, BoardIndex, Cell } from '../board';
-import { Game, GameState } from '../game';
+import { Game } from '../game';
 import { concatMap, delay, from, of } from 'rxjs';
 import { NgClass } from '@angular/common';
+import { GameOptions } from '../game-options';
 
 const blackDotMap: { [k: string]: string | undefined } = {
   '[1,1]': 'bottom right',
@@ -44,14 +45,19 @@ export class CellComponent {
 
   #game = inject(Game);
   #board = inject(Board);
+  #opt = inject(GameOptions);
 
+  #onClickFn = computed(() => {
+    return this.#opt[this.#game.turnFor()].manualReverse()
+      ? this.#reverseManual
+      : this.#reverseAutomatic
+  });
   @HostListener('click')
   async onClick() {
-    this.#reverseManual();
-    // this.#reverseAutomatic();
+    this.#onClickFn()();
   }
 
-  async #reverseManual() {
+  #reverseManual = async () => {
     if (this.#game.state() === 'waitToRev' && this.cell().isWaitedToReverse()) {
       this.cell().reverse();
       return;
@@ -68,7 +74,7 @@ export class CellComponent {
     this.cell().setHighlight('');
   }
 
-  #reverseAutomatic() {
+  #reverseAutomatic = () => {
     if (this.#game.state() !== 'waitToPut') { return; }
 
     const reversableCells = this.#reversableCells();

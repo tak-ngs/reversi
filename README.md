@@ -67,7 +67,7 @@ For more information on using the Angular CLI, including detailed command refere
   * [ ] ヒント時間調整
   * [ ] モード切り替え
 * [x] 四隅の黒丸
-* [ ] 両方が詰んだときに終了する
+* [x] 両方が詰んだときに終了する
 * [ ] 設定の保存
 * [ ] 盤面の保存
 * [ ] めくり方可変
