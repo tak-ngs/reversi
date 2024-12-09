@@ -4,6 +4,12 @@ import { Game } from '../game';
 import { concatMap, delay, from, of } from 'rxjs';
 import { NgClass } from '@angular/common';
 
+const blackDotMap: { [k: string]: string | undefined } = {
+  '[1,1]': 'bottom right',
+  '[1,6]': 'bottom left',
+  '[6,1]': 'top right',
+  '[6,6]': 'top left',
+}
 @Component({
   selector: 'app-cell',
   imports: [NgClass],
@@ -17,6 +23,10 @@ export class CellComponent {
     row: BoardIndex,
     col: BoardIndex
   ]>();
+
+  blackdot = computed(() => {
+    return blackDotMap[JSON.stringify(this.address())];
+  });
 
   #reversableCells = computed(() => {
     const turnFor = this.#game.turnFor();

@@ -2,13 +2,41 @@
   width: var(--cell-size);
   height: var(--cell-size);
   overflow: hidden;
-  border: 1px solid;
+  border: 1px solid black;
   box-sizing: border-box;
   display: flex;
   align-items: center;
   justify-content: center;
   transform-style: preserve-3d;
   perspective: 200px;
+  position: relative;
+  overflow: visible;
+}
+
+.dot {
+  position: absolute;
+  --dot-size: min(calc(var(--cell-size) * .2), 10px);
+  --dot-offset: calc(var(--dot-size) / -2 - 1px);
+  width: var(--dot-size);
+  height: var(--dot-size);
+  background-color: black;
+  border-radius: 50%;
+
+  &.top {
+    top: var(--dot-offset);
+  }
+
+  &.right {
+    right: var(--dot-offset);
+  }
+
+  &.bottom {
+    bottom: var(--dot-offset);
+  }
+
+  &.left {
+    left: var(--dot-offset);
+  }
 }
 
 .stone {
@@ -33,11 +61,15 @@
   }
 
   &.wait-to-reverse {
-    animation-name: glow;
-    animation-duration: 3s;
-    animation-delay: 6s;
-    animation-timing-function: ease-in-out;
-    animation-iteration-count: infinite;
+
+    .black-face,
+    .white-face {
+      animation-name: glow;
+      animation-duration: 3s;
+      animation-delay: 6s;
+      animation-timing-function: ease-in-out;
+      animation-iteration-count: infinite;
+    }
   }
 
   .black-face,

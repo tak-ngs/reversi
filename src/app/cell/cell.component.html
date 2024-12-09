@@ -11,3 +11,8 @@
   <span class="white-face"></span>
 </span>
 }
+@let dotPos = blackdot();
+@if(dotPos){
+<span class="dot"
+  [ngClass]="dotPos"></span>
+}
