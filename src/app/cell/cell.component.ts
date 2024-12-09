@@ -39,18 +39,18 @@ export class CellComponent {
     const turnFor = this.game.turnFor();
     if (turnFor === undefined) { return }
     const reversableCells = this.reversableCells();
-    if (reversableCells.length > 0) {
-      const pendingRef = this.game.pending();
-      this.cell().put(turnFor);
-      from(reversableCells).pipe(
-        concatMap(c => of(c).pipe(delay(150))),
-      ).subscribe({
-        next: cell => cell.reverse(),
-        complete: () => {
-          pendingRef.unlock();
-          this.game.endTurn();
-        }
-      });
-    }
+    if (reversableCells.length === 0) { return; }
+    const pendingRef = this.game.pending();
+    this.cell().put(turnFor);
+    from(reversableCells).pipe(
+      concatMap(c => of(c).pipe(delay(150))),
+    ).subscribe({
+      next: cell => cell.reverse(),
+      complete: () => {
+        pendingRef.unlock();
+        this.game.endTurn();
+      }
+    });
+
   }
 }
