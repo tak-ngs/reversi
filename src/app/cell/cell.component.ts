@@ -1,6 +1,6 @@
 import { Component, computed, HostListener, inject, input } from '@angular/core';
 import { Board, BoardIndex, Cell } from '../board';
-import { Game } from '../game';
+import { Game, GameState } from '../game';
 import { concatMap, delay, from, of } from 'rxjs';
 import { NgClass } from '@angular/common';
 
@@ -30,7 +30,7 @@ export class CellComponent {
 
   #reversableCells = computed(() => {
     const turnFor = this.#game.turnFor();
-    if (turnFor === undefined) {
+    if (this.#game.state() !== 'waitToPut') {
       return [];
     }
     const [r, c] = this.address();
@@ -52,37 +52,35 @@ export class CellComponent {
   }
 
   async #reverseManual() {
-    if (this.#game.state() === 'pending' && this.cell().isWaitedToReverse()) {
+    if (this.#game.state() === 'waitToRev' && this.cell().isWaitedToReverse()) {
       this.cell().reverse();
       return;
     }
 
-    const turnFor = this.#game.turnFor();
-    if (turnFor === undefined) { return }
     const reversableCells = this.#reversableCells();
     if (reversableCells.length === 0) { return; }
-    const pendingRef = this.#game.pending();
-    this.cell().put(turnFor);
+
+    this.cell().put(this.#game.turnFor());
+    this.#game.waitToReverse();
     this.cell().setHighlight('just-putted');
     await Promise.all(reversableCells.map(c => c.waitToReverse()));
-    pendingRef.unlock();
     this.#game.endTurn();
     this.cell().setHighlight('');
   }
 
   #reverseAutomatic() {
-    const turnFor = this.#game.turnFor();
-    if (turnFor === undefined) { return }
+    if (this.#game.state() !== 'waitToPut') { return; }
+
     const reversableCells = this.#reversableCells();
     if (reversableCells.length === 0) { return; }
-    const pendingRef = this.#game.pending();
-    this.cell().put(turnFor);
+
+    this.cell().put(this.#game.turnFor());
+    this.#game.waitToReverse();
     from(reversableCells).pipe(
       concatMap(c => of(c).pipe(delay(150))),
     ).subscribe({
       next: cell => cell.reverse(),
       complete: () => {
-        pendingRef.unlock();
         this.#game.endTurn();
       }
     });

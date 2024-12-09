@@ -24,17 +24,27 @@ export class AppComponent {
   board = inject(Board);
   game = inject(Game);
 
-  dialog = viewChild<ElementRef<HTMLDialogElement>>('cannotPutDialog');
+  cannotPutDialog = viewChild<ElementRef<HTMLDialogElement>>('cannotPutDialog');
   gameEndDialog = viewChild<ElementRef<HTMLDialogElement>>('gameEndDialog');
 
   constructor() {
-    toObservable(this.game.cannotPut)
-      .subscribe(cannotPut => cannotPut ? this.dialog()?.nativeElement.showModal() : undefined)
+    toObservable(this.game.state).pipe(
 
-    toObservable(this.game.stats).pipe(
-      filter(s => s.empty === 0),
-    )
-      .subscribe(end => end ? this.gameEndDialog()?.nativeElement.showModal() : undefined)
+    ).subscribe(state => {
+      console.log(state);
+
+      switch (state) {
+        case 'endByFilled':
+        case 'endByCannotPut':
+          this.gameEndDialog()?.nativeElement.showModal()
+          break;
+        case 'waitToPass':
+          this.cannotPutDialog()?.nativeElement.showModal();
+          break;
+        default:
+          break;
+      }
+    });
   }
 
 }
