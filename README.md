@@ -64,8 +64,9 @@ For more information on using the Angular CLI, including detailed command refere
 * [x] 自分でめくるモード
   * [x] おいた石のハイライト
   * [x] 時間経過でめくるべき石のハイライト
+  * [ ] ヒント時間調整
   * [ ] モード切り替え
-* [ ] 四隅の黒丸
+* [x] 四隅の黒丸
 * [ ] 両方が詰んだときに終了する
 * [ ] 設定の保存
 * [ ] 盤面の保存
