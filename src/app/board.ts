@@ -116,10 +116,10 @@ export class Board {
 
     reset() {
         this.cells.map(c => c.reset());
-        this.#getCell(3, 3).put('black');
-        this.#getCell(3, 4).put('white');
-        this.#getCell(4, 3).put('white');
-        this.#getCell(4, 4).put('black');
+        this.#getCell(3, 3).put('white');
+        this.#getCell(3, 4).put('black');
+        this.#getCell(4, 3).put('black');
+        this.#getCell(4, 4).put('white');
     }
 
     #getCell(r: BoardIndex, c: BoardIndex): Cell {
