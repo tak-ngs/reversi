@@ -20,6 +20,25 @@
   box-sizing: border-box;
   transform-style: preserve-3d;
   position: relative;
+  outline: none;
+  box-shadow: 0;
+
+  &.just-putted {
+
+    .black-face,
+    .white-face {
+      outline: 3px solid #34a4ff;
+      box-shadow: 0px 0px 0px 8px #34a4ff4a;
+    }
+  }
+
+  &.wait-to-reverse {
+    animation-name: glow;
+    animation-duration: 3s;
+    animation-delay: 6s;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+  }
 
   .black-face,
   .white-face {
@@ -30,6 +49,8 @@
     width: 100%;
     height: 100%;
     border-radius: 50%;
+    transition-property: outline-width, box-shadow;
+    transition-duration: .5s;
   }
 
   .black-face {
@@ -68,4 +89,19 @@
 
 .hint.white {
   background-color: white;
+}
+
+
+@keyframes glow {
+  0% {
+    box-shadow: 0px 0px 0px 0px #34ffa04a;
+  }
+
+  50% {
+    box-shadow: 0px 0px 0px 8px #34ffa04a;
+  }
+
+  100% {
+    box-shadow: 0px 0px 0px 0px #34ffa04a;
+  }
 }

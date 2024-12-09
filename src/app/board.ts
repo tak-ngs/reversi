@@ -1,4 +1,6 @@
 import { computed, Injectable, Signal, signal } from "@angular/core";
+import { toObservable } from "@angular/core/rxjs-interop";
+import { first, firstValueFrom, share, tap } from "rxjs";
 
 
 type FixedLengthArray<T, N extends number, A extends any[] = []> = A extends { length: N }
@@ -13,15 +15,24 @@ export type BoardIndex = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7;
 
 export type Cell = Signal<CellState> & {
     asReadonly: () => Signal<CellState>;
+    isWaitedToReverse: Signal<boolean>;
+    waitToReverse: () => Promise<unknown>;
     put: (s: 'black' | 'white') => void;
     reverse: () => void;
+    highlight: Signal<string>;
+    setHighlight: (str: string) => void;
 }
 type CellForBoard = Cell & {
     reset: () => void;
 }
 function cell(): CellForBoard {
     const state = signal<CellState>('empty');
+    const isWaitedToReverse = signal(false);
+    const state$ = toObservable(state).pipe(share());
+    const highlight = signal('');
     return Object.assign(state.asReadonly(), {
+        isWaitedToReverse: isWaitedToReverse.asReadonly(),
+        highlight: highlight.asReadonly(),
         put: (s: 'black' | 'white') => {
             if (state() !== 'empty') {
                 return;
@@ -33,11 +44,24 @@ function cell(): CellForBoard {
             if (s === 'empty') {
                 return;
             }
-            state.set(reverseColor[s])
+            isWaitedToReverse.set(false);
+            state.set(reverseColor[s]);
         },
         reset: () => {
+            isWaitedToReverse.set(false);
             state.set('empty');
         },
+        waitToReverse: () => {
+            const s = state();
+            if (s === 'empty') { return Promise.reject(); }
+
+            isWaitedToReverse.set(true);
+            state()
+            return firstValueFrom(state$.pipe(
+                first(v => v === reverseColor[s])),
+            )
+        },
+        setHighlight: (str: string) => highlight.set(str),
         asReadonly: state.asReadonly,
     })
 }

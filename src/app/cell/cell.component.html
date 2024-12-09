@@ -1,7 +1,12 @@
 @if (cell()() === 'empty') {
 <span class="hint {{canPut()}}"></span>
 } @else {
-<span class="stone {{cell()()}}">
+<span class="stone"
+  [ngClass]="[
+    cell()(),
+    cell().highlight(),
+    cell().isWaitedToReverse() ? 'wait-to-reverse':''
+  ]">
   <span class="black-face"></span>
   <span class="white-face"></span>
 </span>

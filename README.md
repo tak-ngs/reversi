@@ -61,9 +61,10 @@ For more information on using the Angular CLI, including detailed command refere
 ## ToDo
 
 * [x] signal整理
-* [ ] 自分でめくるモード
-  * [ ] おいた石のハイライト
-  * [ ] 時間経過でめくるべき石のハイライト
+* [x] 自分でめくるモード
+  * [x] おいた石のハイライト
+  * [x] 時間経過でめくるべき石のハイライト
+  * [ ] モード切り替え
 * [ ] 四隅の黒丸
 * [ ] 両方が詰んだときに終了する
 * [ ] 設定の保存
