@@ -69,7 +69,7 @@ For more information on using the Angular CLI, including detailed command refere
 * [x] 四隅の黒丸
 * [x] 両方が詰んだときに終了する
 * [x] ヒントのオン/オフ
-* [ ] 決着時のメッセージ
+* [x] 決着時のメッセージ
 * [ ] 設定の保存
 * [ ] 盤面の保存
 * [ ] めくり方可変

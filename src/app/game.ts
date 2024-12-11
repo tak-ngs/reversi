@@ -31,8 +31,8 @@ export class Game {
             black,
             white,
             empty: this.board.cells.filter(cell => cell() === 'empty').length,
-            advantage: black > white ? 'black'
-                : white > black ? 'white'
+            advantage: black > white ? 'くろ'
+                : white > black ? 'しろ'
                     : '-'
         };
     });
