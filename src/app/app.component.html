@@ -6,6 +6,7 @@
   </mat-sidenav>
   <mat-sidenav-content>
     <div class="toolbar">
+      <p>{{game.turnFor() | stoneColor}}の ばん</p>
       <button mat-icon-button
         [disabled]="game.state()==='waitToRev'"
         (click)="menu.open()">
@@ -43,7 +44,16 @@
 
 <dialog #gameEndDialog>
   <p>{{game.stats().black }} 対 {{game.stats().white}}</p>
-  <p> {{game.stats().advantage}} の勝ち！</p>
+  <p>
+
+    @let ad = game.stats().advantage;
+    @if (ad === '-') {
+    ひきわけ
+    } @else {
+    {{ad | stoneColor}} の勝ち！
+    }
+
+  </p>
   <button type="button"
     (click)="game.newGame(); gameEndDialog.close()">
     おわり

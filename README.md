@@ -75,5 +75,5 @@ For more information on using the Angular CLI, including detailed command refere
 * [ ] めくり方可変
   * [ ] ていねい
   * [ ] せっかち
-* [ ] どっちの手番か表示する
+* [x] どっちの手番か表示する
 * [ ] CPU

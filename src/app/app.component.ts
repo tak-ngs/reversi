@@ -10,6 +10,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { GameOptions } from './game-options';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { PlayerOptionsPageComponent } from './options/player-options-page/player-options-page.component';
+import { StoneColorPipe } from "./stone-color.pipe";
 
 @Component({
   selector: 'app-root',
@@ -19,6 +20,7 @@ import { PlayerOptionsPageComponent } from './options/player-options-page/player
     MatButtonModule,
     MatSidenavModule,
     PlayerOptionsPageComponent,
+    StoneColorPipe,
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'

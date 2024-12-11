@@ -45,6 +45,19 @@ mat-sidenav-content {
     align-items: stretch;
     justify-content: center;
   }
+
+  .toolbar {
+    flex-flow: column-reverse;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 16px;
+    width: 56px;
+
+    p {
+      writing-mode: vertical-rl;
+      margin: 0;
+    }
+  }
 }
 
 @media screen and (orientation: portrait) {
@@ -54,7 +67,11 @@ mat-sidenav-content {
 
   .toolbar {
     align-items: center;
-    justify-content: flex-end;
+    justify-content: space-between;
+
+    p {
+      margin: 0;
+    }
   }
 
 }
