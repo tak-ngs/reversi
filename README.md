@@ -70,7 +70,7 @@ For more information on using the Angular CLI, including detailed command refere
 * [x] 両方が詰んだときに終了する
 * [x] ヒントのオン/オフ
 * [x] 決着時のメッセージ
-* [ ] 設定の保存
+* [x] 設定の保存
 * [ ] 盤面の保存
 * [ ] めくり方可変
   * [ ] ていねい

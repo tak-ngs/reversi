@@ -1,12 +1,25 @@
-import { computed, Injectable, Signal, signal } from "@angular/core";
+import { computed, effect, Injectable, Signal, signal, WritableSignal } from "@angular/core";
 
-export class PlayerOptions {
+type PickKeysByPropType<T, S> = {
+  [k in keyof T]: T[k] extends S ? k : never
+}[keyof T];
 
-  readonly enablePutHint = signal(true);
-  readonly manualReverse = signal(true);
-  readonly manualReverseHintDelay = signal(5);
-  readonly putHintDelay = signal(0);
+type WritableSignalPropSet<T> = {
+  [k in PickKeysByPropType<T, WritableSignal<unknown>>]: T[k] extends WritableSignal<infer S> ? S : never
+};
 
+interface PlayerOptionsIF {
+  readonly enablePutHint: WritableSignal<boolean>;
+  readonly manualReverse: WritableSignal<boolean>;
+  readonly manualReverseHintDelay: WritableSignal<number>;
+  readonly putHintDelay: WritableSignal<number>;
+}
+export class PlayerOptions implements PlayerOptionsIF {
+
+  enablePutHint: WritableSignal<boolean>;
+  manualReverse: WritableSignal<boolean>;
+  manualReverseHintDelay: WritableSignal<number>;
+  putHintDelay: WritableSignal<number>;
   readonly manualReverseHintDelayForCSS = computed(() => `${this.manualReverseHintDelay()}s`);
   readonly putHintDelayForCSS = computed(() => `${this.putHintDelay()}s`);
   constructor(arg?: PlayerOptionsInitial) {
@@ -15,6 +28,13 @@ export class PlayerOptions {
     this.manualReverseHintDelay = signal(arg?.manualReverseHintDelay ?? 5);
     this.putHintDelay = signal(arg?.putHintDelay ?? 0);
   }
+
+  readonly optsAsObject = computed<WritableSignalPropSet<PlayerOptionsIF>>(() => ({
+    enablePutHint: this.enablePutHint(),
+    manualReverse: this.manualReverse(),
+    manualReverseHintDelay: this.manualReverseHintDelay(),
+    putHintDelay: this.putHintDelay(),
+  }))
 
 }
 type PlayerOptionsInitial = {
@@ -27,7 +47,14 @@ export class GameOptions {
   white: PlayerOptions;
 
   constructor() {
-    this.black = new PlayerOptions({ manualReverse: false });
-    this.white = new PlayerOptions();
+    this.black = new PlayerOptions(JSON.parse(localStorage.getItem('playerConfigBlack') ?? '{}'));
+    this.white = new PlayerOptions(JSON.parse(localStorage.getItem('playerConfigWhite') ?? '{}'));
+
+    effect(() => {
+      localStorage.setItem('playerConfigBlack', JSON.stringify(this.black.optsAsObject()))
+    });
+    effect(() => {
+      localStorage.setItem('playerConfigWhite', JSON.stringify(this.white.optsAsObject()))
+    });
   }
 }
