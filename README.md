@@ -71,9 +71,10 @@ For more information on using the Angular CLI, including detailed command refere
 * [x] ヒントのオン/オフ
 * [x] 決着時のメッセージ
 * [x] 設定の保存
-* [ ] 盤面の保存
+* [ ] アイコン
+* [ ] CPU
 * [ ] めくり方可変
   * [ ] ていねい
   * [ ] せっかち
 * [x] どっちの手番か表示する
-* [ ] CPU
+* [ ] 盤面の保存
