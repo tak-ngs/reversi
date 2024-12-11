@@ -30,8 +30,8 @@ export class CellComponent {
   });
 
   #reversableCells = computed(() => {
-    const turnFor = this.#game.turnFor();
-    if (this.#game.state() !== 'waitToPut') {
+    const turnFor = this.game.turnFor();
+    if (this.game.state() !== 'waitToPut') {
       return [];
     }
     const [r, c] = this.address();
@@ -39,16 +39,16 @@ export class CellComponent {
   })
 
   canPut = computed(() => this.#reversableCells().length > 0
-    ? this.#game.turnFor()
+    ? this.game.turnFor()
     : undefined
   );
 
-  #game = inject(Game);
+  game = inject(Game);
   #board = inject(Board);
-  #opt = inject(GameOptions);
+  opt = inject(GameOptions);
 
   #onClickFn = computed(() => {
-    return this.#opt[this.#game.turnFor()].manualReverse()
+    return this.opt[this.game.turnFor()].manualReverse()
       ? this.#reverseManual
       : this.#reverseAutomatic
   });
@@ -58,7 +58,7 @@ export class CellComponent {
   }
 
   #reverseManual = async () => {
-    if (this.#game.state() === 'waitToRev' && this.cell().isWaitedToReverse()) {
+    if (this.game.state() === 'waitToRev' && this.cell().isWaitedToReverse()) {
       this.cell().reverse();
       return;
     }
@@ -66,28 +66,28 @@ export class CellComponent {
     const reversableCells = this.#reversableCells();
     if (reversableCells.length === 0) { return; }
 
-    this.cell().put(this.#game.turnFor());
-    this.#game.waitToReverse();
+    this.cell().put(this.game.turnFor());
+    this.game.waitToReverse();
     this.cell().setHighlight('just-putted');
     await Promise.all(reversableCells.map(c => c.waitToReverse()));
-    this.#game.endTurn();
+    this.game.endTurn();
     this.cell().setHighlight('');
   }
 
   #reverseAutomatic = () => {
-    if (this.#game.state() !== 'waitToPut') { return; }
+    if (this.game.state() !== 'waitToPut') { return; }
 
     const reversableCells = this.#reversableCells();
     if (reversableCells.length === 0) { return; }
 
-    this.cell().put(this.#game.turnFor());
-    this.#game.waitToReverse();
+    this.cell().put(this.game.turnFor());
+    this.game.waitToReverse();
     from(reversableCells).pipe(
       concatMap(c => of(c).pipe(delay(150))),
     ).subscribe({
       next: cell => cell.reverse(),
       complete: () => {
-        this.#game.endTurn();
+        this.game.endTurn();
       }
     });
 

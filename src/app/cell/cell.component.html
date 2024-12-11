@@ -1,5 +1,7 @@
 @if (cell()() === 'empty') {
+@if (opt[game.turnFor()].enablePutHint()) {
 <span class="hint {{canPut()}}"></span>
+}
 } @else {
 <span class="stone"
   [ngClass]="[

@@ -66,7 +66,7 @@
     .white-face {
       animation-name: glow;
       animation-duration: 3s;
-      animation-delay: 6s;
+      animation-delay: var(--manual-reverse-hint-delay, 5s);
       animation-timing-function: ease-in-out;
       animation-iteration-count: infinite;
     }
@@ -113,6 +113,7 @@
   border-radius: 50%;
   transition-duration: .5s;
   transition-property: opacity, background-color;
+  transition-delay: var(--put-hint-delay);
 }
 
 .hint.black {
