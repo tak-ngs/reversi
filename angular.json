@@ -42,6 +42,11 @@
           },
           "configurations": {
             "production": {
+              "baseHref": "https://tak-ngs.github.io/reversi/",
+              "outputPath": {
+                "base": "docs",
+                "browser": "."
+              },
               "budgets": [
                 {
                   "type": "initial",
