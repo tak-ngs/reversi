@@ -1,0 +1,17 @@
+<mat-toolbar>
+  <button mat-icon-button
+    type="button"
+    (click)="close.emit()">
+    <mat-icon>close</mat-icon>
+  </button>
+  せってい
+</mat-toolbar>
+
+<mat-tab-group>
+  <mat-tab label="くろ">
+    <app-player-option-form [options]="opt.black" />
+  </mat-tab>
+  <mat-tab label="しろ">
+    <app-player-option-form [options]="opt.white" />
+  </mat-tab>
+</mat-tab-group>

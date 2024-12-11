@@ -3,10 +3,13 @@ import { Board } from './board';
 import { CellComponent } from "./cell/cell.component";
 import { Game } from './game';
 import { toObservable } from '@angular/core/rxjs-interop';
-import { filter } from 'rxjs';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
+import { MatDialog } from '@angular/material/dialog';
+import { GameOptions } from './game-options';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { PlayerOptionsPageComponent } from './options/player-options-page/player-options-page.component';
 
 @Component({
   selector: 'app-root',
@@ -14,6 +17,8 @@ import { MatButtonModule } from '@angular/material/button';
     MatMenuModule,
     MatIconModule,
     MatButtonModule,
+    MatSidenavModule,
+    PlayerOptionsPageComponent,
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
@@ -21,18 +26,15 @@ import { MatButtonModule } from '@angular/material/button';
 export class AppComponent {
   title = 'reversi';
 
-  board = inject(Board);
-  game = inject(Game);
-
+  readonly board = inject(Board);
+  readonly game = inject(Game);
+  readonly dialog = inject(MatDialog);
+  readonly opt = inject(GameOptions);
   cannotPutDialog = viewChild<ElementRef<HTMLDialogElement>>('cannotPutDialog');
   gameEndDialog = viewChild<ElementRef<HTMLDialogElement>>('gameEndDialog');
 
   constructor() {
-    toObservable(this.game.state).pipe(
-
-    ).subscribe(state => {
-      console.log(state);
-
+    toObservable(this.game.state).subscribe(state => {
       switch (state) {
         case 'endByFilled':
         case 'endByCannotPut':

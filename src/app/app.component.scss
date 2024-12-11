@@ -1,4 +1,17 @@
+// Customize the entire app. Change :root to your selector if you want to scope the styles.
+@use '@angular/material' as mat;
+
 :host {
+  @include mat.sidenav-overrides((container-shape:0px,
+      container-width: 100dvw,
+    ));
+}
+
+mat-sidenav-container {
+  height: 100%;
+}
+
+mat-sidenav-content {
   display: flex;
   height: 100%;
 }
@@ -27,7 +40,7 @@
 
 
 @media screen and (orientation: landscape) {
-  :host {
+  mat-sidenav-content {
     flex-flow: row-reverse;
     align-items: stretch;
     justify-content: center;
@@ -35,7 +48,7 @@
 }
 
 @media screen and (orientation: portrait) {
-  :host {
+  mat-sidenav-content {
     flex-flow: column nowrap;
   }
 

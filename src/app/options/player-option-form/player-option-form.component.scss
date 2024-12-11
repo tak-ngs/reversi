@@ -1,0 +1,16 @@
+@use '@angular/material' as mat;
+
+:host {
+
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 12px 0;
+  @include mat.list-overrides((list-item-one-line-container-height: 64px, ));
+}
+
+mat-slider {
+  margin-left: 12px;
+  margin-right: 12px;
+  width: 60%;
+}
