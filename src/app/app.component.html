@@ -6,7 +6,7 @@
   </mat-sidenav>
   <mat-sidenav-content>
     <div class="toolbar">
-      <p>{{game.turnFor() | stoneColor}}の ばん</p>
+      <div class="turn-for"><span>{{game.turnFor() | stoneColor}}の ばん</span></div>
       <button mat-icon-button
         [disabled]="game.state()==='waitToRev'"
         (click)="menu.open()">

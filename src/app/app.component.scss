@@ -3,7 +3,7 @@
 
 :host {
   @include mat.sidenav-overrides((container-shape:0px,
-      container-width: 100dvw,
+      container-width: min(100dvw, 800px),
     ));
 }
 
@@ -53,9 +53,13 @@ mat-sidenav-content {
     gap: 16px;
     width: 56px;
 
-    p {
+    .turn-for {
       writing-mode: vertical-rl;
       margin: 0;
+
+      span {
+        vertical-align: -7px;
+      }
     }
   }
 }
@@ -69,7 +73,7 @@ mat-sidenav-content {
     align-items: center;
     justify-content: space-between;
 
-    p {
+    .turn-for {
       margin: 0;
     }
   }

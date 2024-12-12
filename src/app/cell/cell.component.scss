@@ -113,15 +113,17 @@
   border-radius: 50%;
   transition-duration: .5s;
   transition-property: opacity, background-color;
-  transition-delay: var(--put-hint-delay);
+  transition-delay: 0;
 }
 
 .hint.black {
   background-color: black;
+  transition-delay: var(--put-hint-delay);
 }
 
 .hint.white {
   background-color: white;
+  transition-delay: var(--put-hint-delay);
 }
 
 

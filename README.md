@@ -78,3 +78,4 @@ For more information on using the Angular CLI, including detailed command refere
   * [ ] せっかち
 * [x] どっちの手番か表示する
 * [ ] 盤面の保存
+* [ ] 最初から
