@@ -1,5 +1,5 @@
 import { computed, inject, Injectable, Signal, signal } from "@angular/core";
-import { Board, reverseColor } from "./board";
+import { Board, reverseColor, StoneColor } from "./board";
 
 
 export type GameState = 'waitToPut' | 'waitToRev' | 'waitToPass' | 'endByFilled' | 'endByCannotPut'
@@ -10,7 +10,7 @@ export class Game {
 
     #state = signal<GameState>('waitToPut');
     readonly state: Signal<GameState> = this.#state;
-    readonly #turnFor = signal<'black' | 'white'>('black');
+    readonly #turnFor = signal<StoneColor>('black');
     readonly turnFor = this.#turnFor.asReadonly();
 
     /**
@@ -32,8 +32,8 @@ export class Game {
             white,
             empty: this.board.cells.filter(cell => cell() === 'empty').length,
             advantage: (black > white ? 'black'
-                : white > black ? 'black'
-                    : '-') satisfies 'black' | 'white' | '-' as 'black' | 'white' | '-'
+                : white > black ? 'white'
+                    : '-') satisfies StoneColor | '-' as StoneColor | '-'
         };
     });
 

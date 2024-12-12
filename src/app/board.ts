@@ -7,7 +7,8 @@ type FixedLengthArray<T, N extends number, A extends any[] = []> = A extends { l
     ? A
     : FixedLengthArray<T, N, [...A, T]>
 
-export type CellState = 'empty' | 'black' | 'white';
+export type StoneColor = 'black' | 'white';
+export type CellState = 'empty' | StoneColor;
 export type Row = FixedLengthArray<Cell, 8> & readonly Cell[];
 export type RowCol = FixedLengthArray<Row, 8> & readonly Row[];
 
@@ -17,7 +18,7 @@ export type Cell = Signal<CellState> & {
     asReadonly: () => Signal<CellState>;
     isWaitedToReverse: Signal<boolean>;
     waitToReverse: () => Promise<unknown>;
-    put: (s: 'black' | 'white') => void;
+    put: (s: StoneColor) => void;
     reverse: () => void;
     highlight: Signal<string>;
     setHighlight: (str: string) => void;
@@ -33,7 +34,7 @@ function cell(): CellForBoard {
     return Object.assign(state.asReadonly(), {
         isWaitedToReverse: isWaitedToReverse.asReadonly(),
         highlight: highlight.asReadonly(),
-        put: (s: 'black' | 'white') => {
+        put: (s: StoneColor) => {
             if (state() !== 'empty') {
                 return;
             }
@@ -75,7 +76,7 @@ export function isBoardIndex(i: number): i is BoardIndex {
     return i >= 0 && i < 8;
 }
 
-function reversableCells(cells: Cell[], forC: 'black' | 'white'): Cell[] {
+function reversableCells(cells: Cell[], forC: StoneColor): Cell[] {
     const firstFriendIdx = cells.findIndex(cell => cell() === forC);
     if (firstFriendIdx > 0) {
         const candidates = cells.slice(0, firstFriendIdx);
