@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1733963767066,
+  "timestamp": 1734009316836,
   "index": "https://tak-ngs.github.io/reversi/index.html",
   "assetGroups": [
     {
@@ -13,9 +13,8 @@
       "urls": [
         "https://tak-ngs.github.io/reversi/chunk-I3QCEJDF.js",
         "https://tak-ngs.github.io/reversi/chunk-VGYFKYGA.js",
-        "https://tak-ngs.github.io/reversi/favicon.ico",
         "https://tak-ngs.github.io/reversi/index.html",
-        "https://tak-ngs.github.io/reversi/main-I32LNWEQ.js",
+        "https://tak-ngs.github.io/reversi/main-3VYEBJ2P.js",
         "https://tak-ngs.github.io/reversi/manifest.webmanifest",
         "https://tak-ngs.github.io/reversi/polyfills-FFHMD2TL.js",
         "https://tak-ngs.github.io/reversi/styles-ZMEMZANM.css"
@@ -30,14 +29,17 @@
         "ignoreVary": true
       },
       "urls": [
-        "https://tak-ngs.github.io/reversi/icons/icon-128x128.png",
-        "https://tak-ngs.github.io/reversi/icons/icon-144x144.png",
-        "https://tak-ngs.github.io/reversi/icons/icon-152x152.png",
-        "https://tak-ngs.github.io/reversi/icons/icon-192x192.png",
-        "https://tak-ngs.github.io/reversi/icons/icon-384x384.png",
-        "https://tak-ngs.github.io/reversi/icons/icon-512x512.png",
-        "https://tak-ngs.github.io/reversi/icons/icon-72x72.png",
-        "https://tak-ngs.github.io/reversi/icons/icon-96x96.png"
+        "https://tak-ngs.github.io/reversi/icons/ico-128.png",
+        "https://tak-ngs.github.io/reversi/icons/ico-144.png",
+        "https://tak-ngs.github.io/reversi/icons/ico-152.png",
+        "https://tak-ngs.github.io/reversi/icons/ico-16.png",
+        "https://tak-ngs.github.io/reversi/icons/ico-192.png",
+        "https://tak-ngs.github.io/reversi/icons/ico-32.png",
+        "https://tak-ngs.github.io/reversi/icons/ico-384.png",
+        "https://tak-ngs.github.io/reversi/icons/ico-512.png",
+        "https://tak-ngs.github.io/reversi/icons/ico-72.png",
+        "https://tak-ngs.github.io/reversi/icons/ico-96.png",
+        "https://tak-ngs.github.io/reversi/icons/reversi_icon.svg"
       ],
       "patterns": []
     }
@@ -46,18 +48,20 @@
   "hashTable": {
     "https://tak-ngs.github.io/reversi/chunk-I3QCEJDF.js": "bbea2184c0fddf68ebe937b45948e22db7e44b22",
     "https://tak-ngs.github.io/reversi/chunk-VGYFKYGA.js": "cc0f787709a80dfa6721a435ea7e5ad2c233b12d",
-    "https://tak-ngs.github.io/reversi/favicon.ico": "9c39f434fe1261f68c5e3eefdf734630d99c5670",
-    "https://tak-ngs.github.io/reversi/icons/icon-128x128.png": "f912963bdc6d5a38d8f1dd0afbaab2ce8d657acb",
-    "https://tak-ngs.github.io/reversi/icons/icon-144x144.png": "b155fd5f2fd5d2ea7760721063003c4cd95fd783",
-    "https://tak-ngs.github.io/reversi/icons/icon-152x152.png": "eae6e0f0c8afb8aaae339e2a569b43e9238e5e6c",
-    "https://tak-ngs.github.io/reversi/icons/icon-192x192.png": "15c4180454633880d98674aa7394656196c91584",
-    "https://tak-ngs.github.io/reversi/icons/icon-384x384.png": "94a915751ef6c9282df9aea405ad679230631814",
-    "https://tak-ngs.github.io/reversi/icons/icon-512x512.png": "1de182f76f7329dfa8f9fcdd1fdcdd695bea6a99",
-    "https://tak-ngs.github.io/reversi/icons/icon-72x72.png": "aa88a6096bd973be7f6d7a5489bfa6bc2463f8c4",
-    "https://tak-ngs.github.io/reversi/icons/icon-96x96.png": "7fb8f59c30ce2ff12c700321a0b39e14b3dc8f95",
-    "https://tak-ngs.github.io/reversi/index.html": "e47cdaf5e8299804bfce38c072fd6d9148759602",
-    "https://tak-ngs.github.io/reversi/main-I32LNWEQ.js": "e85da95a540d857a78280250fc667b31d8fcfe17",
-    "https://tak-ngs.github.io/reversi/manifest.webmanifest": "9f9469a98c6003a5b5d27c18079443c01fda3a04",
+    "https://tak-ngs.github.io/reversi/icons/ico-128.png": "22794e1b8b449b7d7a5e4fffedc66ad9d9eae55b",
+    "https://tak-ngs.github.io/reversi/icons/ico-144.png": "fb54959462125190558d9a771db7c3a28895d65e",
+    "https://tak-ngs.github.io/reversi/icons/ico-152.png": "65a838bfa5c555dc47d080a88a5ab7d9a60cc698",
+    "https://tak-ngs.github.io/reversi/icons/ico-16.png": "3ce3fe20fb9fa76d98d5c393d2f47c9a590ddf2d",
+    "https://tak-ngs.github.io/reversi/icons/ico-192.png": "3899114037f226c13b55d52720a45e59dc4ae637",
+    "https://tak-ngs.github.io/reversi/icons/ico-32.png": "05c3165c3f37298a0ef2b7802ff5599aebfc9e99",
+    "https://tak-ngs.github.io/reversi/icons/ico-384.png": "d669f62f719ab362c953996be3671dd35c4a9d7b",
+    "https://tak-ngs.github.io/reversi/icons/ico-512.png": "04d73c2426e2024e9d09fd2ee9eb74e93a50ae79",
+    "https://tak-ngs.github.io/reversi/icons/ico-72.png": "973f0cb5a62e383154c53f0cd1de1dbaca5f7cf7",
+    "https://tak-ngs.github.io/reversi/icons/ico-96.png": "bc702def2270d858a906f4096f9bd2819914fdc7",
+    "https://tak-ngs.github.io/reversi/icons/reversi_icon.svg": "b4a4ec41b8cfc70001d766ae005d68044e8aed7a",
+    "https://tak-ngs.github.io/reversi/index.html": "45766101d18e893a1e0bb3dcab9dcb8b8790a1f1",
+    "https://tak-ngs.github.io/reversi/main-3VYEBJ2P.js": "18d422472096de9b54c256c824c07f27cd10f9df",
+    "https://tak-ngs.github.io/reversi/manifest.webmanifest": "7102f4208c0ca418b7f2722db3c43718a0325e47",
     "https://tak-ngs.github.io/reversi/polyfills-FFHMD2TL.js": "f49b49a155bc7d192db62a4c15d0a612b460a667",
     "https://tak-ngs.github.io/reversi/styles-ZMEMZANM.css": "a32c332f7097342309f4478c77e9ac81c2cac1f0"
   },
