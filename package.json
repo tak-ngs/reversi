@@ -6,7 +6,8 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "gen:icon": "npx icon-gen -i ./public/icons/reversi_icon.svg -o ./public/icons --favicon --favicon-name=ico- --favicon-png-sizes 16,32,72,96,128,144,152,192,384,512"
   },
   "private": true,
   "dependencies": {

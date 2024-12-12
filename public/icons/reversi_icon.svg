@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+<svg width="512" height="512" version="1.1" viewBox="0 0 135.47 135.47" xmlns="http://www.w3.org/2000/svg">
+ <defs>
+  <clipPath id="clipPath2">
+   <rect y="-6.428" width="67.733" height="151.99" fill="#212121"/>
+  </clipPath>
+ </defs>
+ <rect x="8.8818e-16" width="135.47" height="135.47" fill="#0d6800"/>
+ <circle cx="67.733" cy="67.733" r="52.917" fill="#15152c" stroke="#2f2f3f" stroke-linejoin="round" stroke-width="1.5875"/>
+ <circle cx="67.733" cy="67.733" r="52.917" clip-path="url(#clipPath2)" fill="#f8f5f1" stroke="#ebe8e5" stroke-linejoin="round" stroke-width="1.5875"/>
+</svg>
