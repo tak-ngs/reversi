@@ -1,7 +1,7 @@
 {
   "name": "リバーシ",
   "short_name": "リバーシ",
-  "theme_color": "#1976d2",
+  "theme_color": "#0d6800",
   "background_color": "#fafafa",
   "display": "standalone",
   "scope": "./",
