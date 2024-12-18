@@ -23,7 +23,7 @@
         <div class="row">
           @for (cell of row; track $index;let ci = $index){
           <app-cell [cell]="cell"
-            [address]="[$any(ri),$any(ci)]"></app-cell>
+            [address]="[ri,ci]"></app-cell>
           }
         </div>
         }

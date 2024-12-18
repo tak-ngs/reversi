@@ -21,8 +21,8 @@ export class CellComponent {
 
   readonly cell = input.required<Cell>();
   readonly address = input.required<[
-    row: BoardIndex,
-    col: BoardIndex
+    row: number,
+    col: number
   ]>();
 
   blackdot = computed(() => {
