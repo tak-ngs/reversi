@@ -39,6 +39,15 @@
   }
 }
 
+.stone-wrapper {
+  display: flex;
+  width: var(--stone-size);
+  height: var(--stone-size);
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
 .stone {
   display: block;
   width: var(--stone-size);
@@ -114,6 +123,11 @@
   transition-duration: .5s;
   transition-property: opacity, background-color;
   transition-delay: 0;
+
+}
+
+:host-context([data-game-state^=endBy]) .hint {
+  display: none;
 }
 
 .hint.black {

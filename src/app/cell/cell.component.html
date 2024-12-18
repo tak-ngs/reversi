@@ -1,18 +1,21 @@
-@if (cell()() === 'empty') {
-@if (opt[game.turnFor()].enablePutHint()) {
-<span class="hint {{canPut()}}"></span>
-}
-} @else {
-<span class="stone"
-  [ngClass]="[
+<div class="stone-wrapper">
+  @if (cell()() === 'empty') {
+  @if (opt[game.turnFor()].enablePutHint() && !game.state().startsWith('endBy')) {
+  <span class="hint {{canPut()}}"></span>
+  }
+  } @else {
+  <span class="stone"
+    [ngClass]="[
     cell()(),
     cell().highlight(),
     cell().isWaitedToReverse() ? 'wait-to-reverse':''
   ]">
-  <span class="black-face"></span>
-  <span class="white-face"></span>
-</span>
-}
+    <span class="black-face"></span>
+    <span class="white-face"></span>
+  </span>
+  }
+</div>
+
 @let dotPos = blackdot();
 @if(dotPos){
 <span class="dot"

@@ -17,7 +17,8 @@
       [style]="{
         '--manual-reverse-hint-delay': opt[game.turnFor()].manualReverseHintDelayForCSS(),
         '--put-hint-delay': opt[game.turnFor()].putHintDelayForCSS(),
-       }">
+       }"
+      [attr.data-game-state]="game.state()">
       <div class="board">
         @for (row of board.rows; track $index; let ri = $index ) {
         <div class="row">

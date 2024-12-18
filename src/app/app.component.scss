@@ -32,9 +32,12 @@ mat-sidenav-content {
   background-color: darkgreen;
   width: fit-content;
   align-self: center;
+  display: grid;
+  grid-template-columns: repeat(8, var(--cell-size));
 
   .row {
-    display: flex;
+    // TODO row要素を消す
+    display: contents;
   }
 }
 

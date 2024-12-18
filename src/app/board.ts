@@ -25,6 +25,7 @@ export type Cell = Signal<CellState> & {
 }
 type CellForBoard = Cell & {
     reset: () => void;
+    set: (state: CellState) => void
 }
 function cell(): CellForBoard {
     const state = signal<CellState>('empty');
@@ -51,6 +52,9 @@ function cell(): CellForBoard {
         reset: () => {
             isWaitedToReverse.set(false);
             state.set('empty');
+        },
+        set: (s: CellState) => {
+            state.set(s);
         },
         waitToReverse: () => {
             const s = state();
