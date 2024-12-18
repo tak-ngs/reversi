@@ -20,13 +20,9 @@
        }"
       [attr.data-game-state]="game.state()">
       <div class="board">
-        @for (row of board.rows; track $index; let ri = $index ) {
-        <div class="row">
-          @for (cell of row; track $index;let ci = $index){
+        @for (cell of board.cells; track $index; let ri = $index ) {
           <app-cell [cell]="cell"
-            [address]="[ri,ci]"></app-cell>
-          }
-        </div>
+          [address]="$index | fn: address"></app-cell>
         }
       </div>
     </div>

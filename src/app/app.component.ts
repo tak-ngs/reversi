@@ -11,6 +11,7 @@ import { GameOptions } from './game-options';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { PlayerOptionsPageComponent } from './options/player-options-page/player-options-page.component';
 import { StoneColorPipe } from "./stone-color.pipe";
+import { FnPipe } from './fn.pipe';
 
 @Component({
   selector: 'app-root',
@@ -21,6 +22,7 @@ import { StoneColorPipe } from "./stone-color.pipe";
     MatSidenavModule,
     PlayerOptionsPageComponent,
     StoneColorPipe,
+    FnPipe,
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
@@ -42,7 +44,7 @@ export class AppComponent {
         case 'endByFilled':
         case 'endByCannotPut':
           await sleep(1500);
-          await this.order();
+          await this.#order();
           this.gameEndDialog()?.nativeElement.showModal();
           break;
         case 'waitToPass':
@@ -54,27 +56,31 @@ export class AppComponent {
     });
   }
 
-  async order() {
+
+  address = (i: number): [number, number] => {
+    return [Math.trunc(i / 8), i % 8];
+  }
+  async #order() {
     for (let i = 0; i < 64; i++) {
       const cell = this.board.cells[i]();
       if (cell === 'black') { continue; }
       if (cell === 'empty') {
         // 最も遠くの黒をここにおく
         const farthestBlackIdx = i + this.board.cells.slice(i).findLastIndex(c => c() === 'black');
-        farthestBlackIdx > i && await this.swapCells(i, farthestBlackIdx);
+        farthestBlackIdx > i && await this.#swapCells(i, farthestBlackIdx);
       }
       if (cell === 'white') {
         // 最も遠くの 白以外に これ(白)を置く
         const farthestNonWhiteIdx = i + this.board.cells.slice(i).findLastIndex(c => c() === 'empty' || c() === 'black');
-        farthestNonWhiteIdx > i && await this.swapCells(i, farthestNonWhiteIdx);
-        // 最も近くの黒をここに置く
-        const nearestBlackIdx = i + this.board.cells.slice(i).findIndex(c => c() === 'black');
-        nearestBlackIdx > i && await this.swapCells(i, nearestBlackIdx);
+        farthestNonWhiteIdx > i && await this.#swapCells(i, farthestNonWhiteIdx);
+        // 最も遠くの黒をここに置く
+        const farthestBlackIdx = i + this.board.cells.slice(i).findLastIndex(c => c() === 'black');
+        farthestBlackIdx > i && await this.#swapCells(i, farthestBlackIdx);
       }
     }
   }
 
-  async swapCells(aIdx: number, bIdx: number) {
+  async #swapCells(aIdx: number, bIdx: number) {
     if (aIdx === bIdx) { return; }
     const a = this.cellViews()[aIdx].nativeElement.querySelector<HTMLElement>('.stone-wrapper')!;
     const b = this.cellViews()[bIdx].nativeElement.querySelector<HTMLElement>('.stone-wrapper')!;
@@ -101,8 +107,6 @@ export class AppComponent {
     a.style.transition = 'unset';
     b.parentElement!.style.zIndex = '';
     b.style.transition = 'unset';
-    stoneA && (stoneA.style.transition = 'unset');
-    stoneB && (stoneB.style.transition = 'unset');
     await sleep(50);
     a.style.transform = ''
     b.style.transform = ''

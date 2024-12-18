@@ -126,8 +126,14 @@
 
 }
 
-:host-context([data-game-state^=endBy]) .hint {
-  display: none;
+:host-context([data-game-state^=endBy]) {
+  .stone {
+    transition: none;
+  }
+
+  .hint {
+    display: none;
+  }
 }
 
 .hint.black {
