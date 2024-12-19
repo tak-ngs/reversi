@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1734095544791,
+  "timestamp": 1734613996486,
   "index": "https://tak-ngs.github.io/reversi/index.html",
   "assetGroups": [
     {
@@ -11,11 +11,11 @@
         "ignoreVary": true
       },
       "urls": [
-        "https://tak-ngs.github.io/reversi/chunk-G6KEQJRA.js",
-        "https://tak-ngs.github.io/reversi/chunk-TG4BEGQ2.js",
+        "https://tak-ngs.github.io/reversi/chunk-DQLOMZTX.js",
+        "https://tak-ngs.github.io/reversi/chunk-LWPFQKWL.js",
         "https://tak-ngs.github.io/reversi/icons/favicon.ico",
         "https://tak-ngs.github.io/reversi/index.html",
-        "https://tak-ngs.github.io/reversi/main-PGNYFQSC.js",
+        "https://tak-ngs.github.io/reversi/main-PRFU35WL.js",
         "https://tak-ngs.github.io/reversi/manifest.webmanifest",
         "https://tak-ngs.github.io/reversi/polyfills-FFHMD2TL.js",
         "https://tak-ngs.github.io/reversi/styles-RPBIWGEV.css"
@@ -47,8 +47,8 @@
   ],
   "dataGroups": [],
   "hashTable": {
-    "https://tak-ngs.github.io/reversi/chunk-G6KEQJRA.js": "96b1e9a7915a99f1762f42bdcd46100ba15cbfc7",
-    "https://tak-ngs.github.io/reversi/chunk-TG4BEGQ2.js": "168372da33e63feb1b6fd926baaeb66ad3189bf3",
+    "https://tak-ngs.github.io/reversi/chunk-DQLOMZTX.js": "2ce86af2d0b258259f3814ac71514fc915ac601f",
+    "https://tak-ngs.github.io/reversi/chunk-LWPFQKWL.js": "d8453d3f12ccf38848244aca0eb7ba66d8c6222f",
     "https://tak-ngs.github.io/reversi/icons/favicon.ico": "76c10234968914bcf7986cba915b568ac36c06b5",
     "https://tak-ngs.github.io/reversi/icons/ico-128.png": "22794e1b8b449b7d7a5e4fffedc66ad9d9eae55b",
     "https://tak-ngs.github.io/reversi/icons/ico-144.png": "fb54959462125190558d9a771db7c3a28895d65e",
@@ -61,8 +61,8 @@
     "https://tak-ngs.github.io/reversi/icons/ico-72.png": "973f0cb5a62e383154c53f0cd1de1dbaca5f7cf7",
     "https://tak-ngs.github.io/reversi/icons/ico-96.png": "bc702def2270d858a906f4096f9bd2819914fdc7",
     "https://tak-ngs.github.io/reversi/icons/reversi_icon.svg": "b4a4ec41b8cfc70001d766ae005d68044e8aed7a",
-    "https://tak-ngs.github.io/reversi/index.html": "0ab2cee3c77e5a9e65c89bbf8cc3593dd41e4f64",
-    "https://tak-ngs.github.io/reversi/main-PGNYFQSC.js": "2bcd1e54063c97dd44c89458105fe199d7bded79",
+    "https://tak-ngs.github.io/reversi/index.html": "52defb2e475709b9f0e7c32d24671d06127e18bf",
+    "https://tak-ngs.github.io/reversi/main-PRFU35WL.js": "bc521338b4bf3bb7fd8be3de43e7565f01dee41b",
     "https://tak-ngs.github.io/reversi/manifest.webmanifest": "53a279ed1e22a358d70efca05268a9a79fca5541",
     "https://tak-ngs.github.io/reversi/polyfills-FFHMD2TL.js": "f49b49a155bc7d192db62a4c15d0a612b460a667",
     "https://tak-ngs.github.io/reversi/styles-RPBIWGEV.css": "743a9c3c1319459279eb831de6eb3805b290ba4c"
