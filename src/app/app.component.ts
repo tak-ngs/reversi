@@ -12,10 +12,13 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { PlayerOptionsPageComponent } from './options/player-options-page/player-options-page.component';
 import { StoneColorPipe } from "./stone-color.pipe";
 import { FnPipe } from './fn.pipe';
+import { NgClass } from '@angular/common';
 
 @Component({
   selector: 'app-root',
-  imports: [CellComponent,
+  imports: [
+    NgClass,
+    CellComponent,
     MatMenuModule,
     MatIconModule,
     MatButtonModule,
@@ -38,6 +41,12 @@ export class AppComponent {
   gameEndDialog = viewChild<ElementRef<HTMLDialogElement>>('gameEndDialog');
   cellViews = viewChildren<CellComponent, ElementRef<HTMLElement>>(CellComponent, { read: ElementRef });
 
+  dot: { [k: number]: string | undefined } = {
+    9: 'bottom right',
+    14: 'bottom left',
+    49: 'top right',
+    54: 'top left',
+  }
   constructor() {
     toObservable(this.game.state).subscribe(async state => {
       switch (state) {
@@ -55,7 +64,6 @@ export class AppComponent {
       }
     });
   }
-
 
   address = (i: number): [number, number] => {
     return [Math.trunc(i / 8), i % 8];
@@ -91,7 +99,7 @@ export class AppComponent {
     const stoneB = b.querySelector<HTMLElement>('.stone');
     const colorA = this.board.cells[aIdx]();
     const colorB = this.board.cells[bIdx]();
-    const transDuration = 1500;
+    const transDuration = 150;
 
     a.parentElement!.style.zIndex = '3';
     a.style.zIndex = '4';

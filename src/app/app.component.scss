@@ -22,23 +22,59 @@ mat-sidenav-content {
 }
 
 .board-container {
+  position: relative;
   flex: 1 0 auto;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.board {
-  background-color: darkgreen;
-  width: fit-content;
-  align-self: center;
+.board-back {
+  position: absolute;
   display: grid;
   grid-template-columns: repeat(8, var(--cell-size));
+  background-color: darkgreen;
 
-  .row {
-    // TODO row要素を消す
-    display: contents;
+  border: 5px solid black;
+
+  .cell {
+    position: relative;
+    height: var(--cell-size);
+    box-sizing: border-box;
+    border: 1px solid black;
+
+    .dot {
+      position: absolute;
+      --dot-size: min(calc(var(--cell-size) * .2), 10px);
+      --dot-offset: calc(var(--dot-size) / -2 - 1px);
+      width: var(--dot-size);
+      height: var(--dot-size);
+      background-color: black;
+      border-radius: 50%;
+
+      &.top {
+        top: var(--dot-offset);
+      }
+
+      &.right {
+        right: var(--dot-offset);
+      }
+
+      &.bottom {
+        bottom: var(--dot-offset);
+      }
+
+      &.left {
+        left: var(--dot-offset);
+      }
+    }
   }
+
+}
+
+.board {
+  display: grid;
+  grid-template-columns: repeat(8, var(--cell-size));
 }
 
 

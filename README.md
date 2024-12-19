@@ -79,5 +79,6 @@ For more information on using the Angular CLI, including detailed command refere
 * [x] どっちの手番か表示する
 * [ ] 盤面の保存
 * [ ] 最初から
-* [ ] 最後の演出
-  * いしが整列してくとか
+* [x] 最後の演出
+  * [x] いしが整列してく
+  * [x] :bug: ボードの罫線が上に見えることがある

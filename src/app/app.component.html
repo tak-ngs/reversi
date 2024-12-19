@@ -19,8 +19,18 @@
         '--put-hint-delay': opt[game.turnFor()].putHintDelayForCSS(),
        }"
       [attr.data-game-state]="game.state()">
+      <div class="board-back">
+        @for (cell of board.cells; track $index) {
+        <div class="cell">
+          @if(dot[$index]; as dotPos){
+          <span class="dot"
+            [ngClass]="dotPos"></span>
+          }
+        </div>
+        }
+      </div>
       <div class="board">
-        @for (cell of board.cells; track $index; let ri = $index ) {
+        @for (cell of board.cells; track $index) {
           <app-cell [cell]="cell"
           [address]="$index | fn: address"></app-cell>
         }
