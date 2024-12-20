@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1734613996486,
+  "timestamp": 1734708276595,
   "index": "https://tak-ngs.github.io/reversi/index.html",
   "assetGroups": [
     {
@@ -61,7 +61,7 @@
     "https://tak-ngs.github.io/reversi/icons/ico-72.png": "973f0cb5a62e383154c53f0cd1de1dbaca5f7cf7",
     "https://tak-ngs.github.io/reversi/icons/ico-96.png": "bc702def2270d858a906f4096f9bd2819914fdc7",
     "https://tak-ngs.github.io/reversi/icons/reversi_icon.svg": "b4a4ec41b8cfc70001d766ae005d68044e8aed7a",
-    "https://tak-ngs.github.io/reversi/index.html": "52defb2e475709b9f0e7c32d24671d06127e18bf",
+    "https://tak-ngs.github.io/reversi/index.html": "d0b518d58fd2a78c61d755800f77d278cfa49b30",
     "https://tak-ngs.github.io/reversi/main-PRFU35WL.js": "bc521338b4bf3bb7fd8be3de43e7565f01dee41b",
     "https://tak-ngs.github.io/reversi/manifest.webmanifest": "53a279ed1e22a358d70efca05268a9a79fca5541",
     "https://tak-ngs.github.io/reversi/polyfills-FFHMD2TL.js": "f49b49a155bc7d192db62a4c15d0a612b460a667",
